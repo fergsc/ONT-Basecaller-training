@@ -44,7 +44,5 @@ do
     fi
 done
 
-
-/g/data/xe2/scott/bonito/models/dna_r10.3_450bps_sup.cfg
-
-${bonitoDir}/bonito export $(basename $run)~trained > /data/models/my-model/weights.jsn
+mkdir guppy-model
+${bonitoDir}/bonito export $(basename $run)~trained > guppy-model/weights.jsn
