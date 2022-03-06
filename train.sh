@@ -1,4 +1,5 @@
 basecallingOutput="/path/to/bonito-basecalling"
+bonitoDir="/path/to/bonito"
 
 cudaDevice="cuda:0"
 epochs=15      # number of training cycles
@@ -12,7 +13,7 @@ learning_rate=4e-4 # tuning parameter for optimization of learning algorithm.
 # batch and chunk = resource optimisation.
 
 
-/g/data/xe2/scott/bonito/bonito/venv3/bin/bonito train \
+${bonitoDir}/bonito train \
     --device $cudaDevice           \
     --epochs $epochs               \
     --lr $learning_rate            \
