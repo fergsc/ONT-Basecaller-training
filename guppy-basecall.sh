@@ -1,7 +1,8 @@
 CFG="bonitoi-trained-model.cfg"
 fast5Dir="/path/to/fast5"
 cudaDevice="cuda:0"
-guppyPath="/path/to/guppyh"
+guppyPath="/path/to/guppy"
+nanoplotPath="/path/to/nanoplot"
 
 [ -d guppyOutput ] && rm -r guppyOutput
 mkdir guppyOutput
@@ -17,5 +18,7 @@ ${guppyPath}/guppy_basecaller \
     --disable_qscore_filtering
 
 find guppyOutput -name '*.fastq'  | xargs cat | pigz -p $threads > $(basename $fast5Dir).fastq.gz
-cp guppyOutput/*.txt .
+cp guppyOutput/sequencing_summary.txt .
 rm -r guppyOutput
+
+${nanoplotPath}/NanoPlot --summary sequencing_summary.txt -o sequencing_summary~plots
